@@ -41,12 +41,17 @@ function startQuiz() {
   }, 1000);
 
   for (let i = 0; i < questions.length; i++) {
-    var ranQuestion1 = questions[i];
-    ranQuestion1[Math.floor(Math.random() * ranQuestion1 1)];
-    question.textContent = ranQuestion1;
-    console.log(ranQuestion1);
+    var ranQuestions1 = questions[i];
+    console.log(ranQuestions1);
+    var questionOneSplit =
+      ranQuestions1[Math.floor(Math.random() * ranQuestions1.length)];
+    console.log(questionOneSplit);
+    var questionOne = questionOneSplit.join();
 
-    if (ranQuestion1 === "Question 1") {
+    question.textContent = questionOne;
+    console.log(questionOne);
+
+    if (ranQuestions1 === 0) {
       for (let i = 0; i < question1A.length; i++) {
         var ranAnswer1 = question1A[i];
         ranAnswer1[Math.floor(Math.random() * ranAnswer1.length)];
@@ -56,7 +61,7 @@ function startQuiz() {
         answerButtons.appendChild(q1btns);
       }
     }
-    if (ranQuestion1 === "Question 2") {
+    if (ranQuestions1 === 1) {
       for (let i = 0; i < question2A.length; i++) {
         var ranAnswer2 = question2A[i];
         ranAnswer2[Math.floor(Math.random() * ranAnswer2.length)];
@@ -66,7 +71,7 @@ function startQuiz() {
         answerButtons.appendChild(q2btns);
       }
     }
-    if (ranQuestion1 === "Question 3") {
+    if (ranQuestions1 === 2) {
       for (let i = 0; i < question3A.length; i++) {
         var ranAnswer3 = question3A[i];
         ranAnswer3[Math.floor(Math.random() * ranAnswer3.length)];
@@ -76,7 +81,7 @@ function startQuiz() {
         answerButtons.appendChild(q3btns);
       }
     }
-    if (ranQuestion1 === "Question 4") {
+    if (ranQuestions1 === 3) {
       for (let i = 0; i < question4A.length; i++) {
         var ranAnswer4 = question4A[i];
         ranAnswer4[Math.floor(Math.random() * ranAnswer4.length)];
