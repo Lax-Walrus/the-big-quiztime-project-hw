@@ -5,7 +5,7 @@ var startQuizTimer = document.querySelector("#start-quiz-timer");
 var score = document.querySelector("#score");
 var question = document.querySelector("#question");
 var startButton = document.querySelector("#start-button");
-var questions = ["Question 1", "Question 2", "Question 3", "Question 4"];
+var questions = [1, 2, 3, 4];
 var question1A = ["answer 1", "answer 2", "answer 3", "answer 4"];
 var question2A = ["answer 21", "answer 22", "answer 23", "answer 24"];
 var question3A = ["answer 31", "answer 32", "answer 33", "answer 34"];
@@ -42,16 +42,12 @@ function startQuiz() {
 
   for (let i = 0; i < questions.length; i++) {
     var ranQuestions1 = questions[i];
-    console.log(ranQuestions1);
     var questionOneSplit =
       ranQuestions1[Math.floor(Math.random() * ranQuestions1.length)];
     console.log(questionOneSplit);
-    var questionOne = questionOneSplit.join();
 
-    question.textContent = questionOne;
-    console.log(questionOne);
-
-    if (ranQuestions1 === 0) {
+    if (questionOneSplit === 1) {
+      question.textContent = "Question 1";
       for (let i = 0; i < question1A.length; i++) {
         var ranAnswer1 = question1A[i];
         ranAnswer1[Math.floor(Math.random() * ranAnswer1.length)];
@@ -61,7 +57,8 @@ function startQuiz() {
         answerButtons.appendChild(q1btns);
       }
     }
-    if (ranQuestions1 === 1) {
+    if (questionOneSplit === 2) {
+      question.textContent = "Question 2";
       for (let i = 0; i < question2A.length; i++) {
         var ranAnswer2 = question2A[i];
         ranAnswer2[Math.floor(Math.random() * ranAnswer2.length)];
@@ -71,7 +68,8 @@ function startQuiz() {
         answerButtons.appendChild(q2btns);
       }
     }
-    if (ranQuestions1 === 2) {
+    if (questionOneSplit === 3) {
+      question.textContent = "Question 3";
       for (let i = 0; i < question3A.length; i++) {
         var ranAnswer3 = question3A[i];
         ranAnswer3[Math.floor(Math.random() * ranAnswer3.length)];
@@ -81,7 +79,8 @@ function startQuiz() {
         answerButtons.appendChild(q3btns);
       }
     }
-    if (ranQuestions1 === 3) {
+    if (questionOneSplit === 4) {
+      question.textContent = "Question 4";
       for (let i = 0; i < question4A.length; i++) {
         var ranAnswer4 = question4A[i];
         ranAnswer4[Math.floor(Math.random() * ranAnswer4.length)];
@@ -92,6 +91,4 @@ function startQuiz() {
       }
     }
   }
-
-  console.log(q1btns, q2btns, q3btns, q4btns);
 }
