@@ -1,0 +1,11 @@
+body{
+    background-color: plum;
+}
+
+.start-button-area{
+display: block;
+margin: 0 auto;
+margin-top: 200px;
+text-align: center;
+font-size: xx-large;
+}

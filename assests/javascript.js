@@ -1,5 +1,6 @@
 console.log("this is linked");
-var answerButtons = document.querySelector(".answer-area");
+var answerAreax = document.querySelector(".answer-area")
+var answerButtons = document.querySelector(".d-grid gap-2");
 var timer = document.querySelector("#timer-clock");
 var startQuizTimer = document.querySelector("#start-quiz-timer");
 var score = document.querySelector("#score");
@@ -8,6 +9,7 @@ var startButton = document.querySelector("#start-button");
 var scoreContainer = document.querySelector(".score-container");
 var nameInput = document.querySelector("#name-input");
 var grade = document.querySelector("#grade");
+var welcomeToMyGame = document.querySelector(".opening-header")
 var names = [];
 var questions = ["Question 1", "Question 2", "Question 3", "Question 4"];
 var question1A = ["answer 1", "answer 2", "answer 3", "answer 4"];
@@ -18,8 +20,10 @@ var quizTime = 99;
 var startingTime = 5;
 var finalScore = 99;
 
+answerAreax.style.display = "none";
 question.style.display = "none";
 scoreContainer.style.display = "none";
+
 
 startButton.addEventListener("click", function () {
   var startTimerInterval = setInterval(function () {
@@ -35,11 +39,15 @@ startButton.addEventListener("click", function () {
 });
 
 function startQuiz() {
+
+  welcomeToMyGame.style.display = "none"
   question.style.display = "block";
+  answerAreax.style.display = "none";
 
   var timeInterval = setInterval(function () {
     quizTime--;
     timer.textContent = quizTime + " left in quiz";
+    timer.style.textAlign = "center";
     if (quizTime === 0) {
       clearInterval(quizTime);
       hiscores();
@@ -52,22 +60,25 @@ function startQuiz() {
 
   var questionArea1 = document.createElement("h1");
   questionArea1.textContent = questionOne;
+  questionArea1.style.textAlign = "center"
   question.appendChild(questionArea1);
 
   for (let i = 0; i < question1A.length; i++) {
     var answerOne = question1A[i];
 
-    var answersQuestionOne = document.createElement("button");
-    answersQuestionOne.textContent = answerOne;
-    answerButtons.appendChild(answersQuestionOne);
+  // var attached = document.createElement("p")
+  // attached.textContent = answerOne
+  // attached.appendChild(answerAreax)
+
+  
   }
   answerButtons.addEventListener("click", function () {
-    if ( === true) {
+    if (answersQuestionOne === "button 2") {
       var correctanswerloc = document.createElement("h1");
       correctanswerloc.textContent = "correct";
       answerButtons.appendChild(correctanswerloc);
     } else {
-      quizTime--;
+      quizTime = quizTime - 5;
       var wronganswerloc = document.createElement("h1");
       wronganswerloc.textContent = "wrong";
       answerButtons.appendChild(wronganswerloc);
