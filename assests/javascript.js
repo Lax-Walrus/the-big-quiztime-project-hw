@@ -62,7 +62,7 @@ function startQuiz() {
     answerButtons.appendChild(answersQuestionOne);
   }
   answerButtons.addEventListener("click", function () {
-    if ( === true) {
+    if (answerButtons === true) {
       var correctanswerloc = document.createElement("h1");
       correctanswerloc.textContent = "correct";
       answerButtons.appendChild(correctanswerloc);
