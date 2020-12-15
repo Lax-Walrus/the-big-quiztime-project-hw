@@ -1,6 +1,6 @@
 console.log("this is linked");
 // vars and element links
-var answersbtn = document.getElementsByClassName("btn");
+var answers = document.getElementsByClassName("btn");
 var answerAreax = document.querySelector(".answer-area");
 var answerOne = document.querySelector("#Answer1");
 var answerTwo = document.querySelector("#Answer2");
@@ -18,25 +18,25 @@ var welcomeToMyGame = document.querySelector(".opening-header");
 var names = [];
 var questions = [
   {
-    question: "What is your favorite color?",
-    answers: ["Red", "Blue", "Green", "bloody murder"],
-    correctAnswer: "bloody murder",
+    question: "Who is at the bottom of crystal lake?",
+    answers: ["Freddy Krueger", "Jason Voorhees", "Amy Voorhees", "me"],
+    correctAnswer: "Jason Voorhees",
   },
   {
-    question: "scary movie?",
-    answers: ["dying", "night", "of", "bloody murder"],
-    correctAnswer: "bloody murder",
+    question: "who invades dreams?",
+    answers: ["My Crush", "Michael Myers", "Leather Face", "Freddy Krueger"],
+    correctAnswer: "Freddy Krueger",
   },
   {
-    question: "potatoes",
-    answers: ["dying", "night", "of", "bloody murder"],
-    correctAnswer: "bloody murder",
+    question: "who's a big fan of liver and lima beans?",
+    answers: ["Chucky", "Jigsaw", "Hannibal Lecter", "gross"],
+    correctAnswer: "Hannibal Lecter",
   },
 
   {
-    question: "What is your favorite band?",
-    answers: ["dogs", "Blue", "Green", "bloody murder"],
-    correctAnswer: "bloody murder",
+    question: "Who is horror show host voice by John Kassir? ",
+    answers: ["Tiny Tim", "Crypt-Keeper", "Igor", "Nosferatu"],
+    correctAnswer: "Crypt-Keeper",
   },
 ];
 var questionIndex = 0;
@@ -47,7 +47,7 @@ var finalScore = 99;
 answerAreax.style.display = "none";
 question.style.display = "none";
 scoreContainer.style.display = "none";
-
+// question and answer connect function used on line 91
 var showAnswers = function (currentQuestion) {
   question.textContent = currentQuestion.question;
   answerOne.textContent = currentQuestion.answers[0];
@@ -89,22 +89,25 @@ function startQuiz() {
     }
   }, 1000);
 
-  //   question 1
+  //  question and answer match up function see line 51
   showAnswers(questions[0]);
 
-  //   answer 1
-
+  // for loop to put answer on buttons
   for (let i = 0; i < answers.length; i++)
     answers[i].addEventListener("click", function () {
       if (this.textContent === questions[questionIndex].correctAnswer) {
+        answerAreax = "you are correct";
         questionIndex++;
-        alert("i'm correct");
-
         showAnswers(questions[questionIndex]);
-      } else this.textContent !== questions[questionIndex].correctAnswer;
-      alert("i'm wrong");
+      }
+
+      if (questionIndex > 4) {
+        hiscores();
+      } else {
+        answerAreax = "are you sure about that?";
+        quizTime = quizTime - 10;
+      }
     });
-  console.log();
 
   // hiscores feature
 
