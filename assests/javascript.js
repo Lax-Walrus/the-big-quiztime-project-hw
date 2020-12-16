@@ -15,6 +15,7 @@ var scoreContainer = document.querySelector(".score-container");
 var nameInput = document.querySelector("#name-input");
 var grade = document.querySelector("#grade");
 var welcomeToMyGame = document.querySelector(".opening-header");
+var userValues = JSON.parse(localStorage.getItem("userValues") || "[]");
 var names = [];
 var questions = [
   {
@@ -116,14 +117,22 @@ function startQuiz() {
     });
 
   // hiscores feature
+  var scoreList = document.querySelector(".score-list");
 
   function hiscores() {
+    var submitscore = document.querySelector("#submit-scores");
     question.style.display = "none";
     answerAreax.style.display = "none";
     grade.style.display = "none";
     scoreContainer.style.display = "block";
-    nameInput.addEventListener("submit", function (event) {
-      event.preventDefault();
+    submitscore.addEventListener("click", function () {
+      var scores = { nameInput: [nameInput.value], score: [quizTime] };
+      userValues.push(scores);
+      console.log(scores);
+      localStorage.setItem("userValues", JSON.stringify(userValues));
+
+      JSON.parse(userValues).textContent = score.nameInput;
+      JSON.parse(userValues).textContent = score.score;
     });
   }
 }
