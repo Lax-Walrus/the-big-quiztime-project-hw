@@ -19,7 +19,7 @@ var names = [];
 var questions = [
   {
     question: "Who is at the bottom of crystal lake?",
-    answers: ["Freddy Krueger", "Jason Voorhees", "Amy Voorhees", "me"],
+    answers: ["Freddy Krueger", "Jason Voorhees", "Amy Voorhees", "Me"],
     correctAnswer: "Jason Voorhees",
   },
   {
@@ -35,10 +35,11 @@ var questions = [
 
   {
     question: "Who is horror show host voice by John Kassir? ",
-    answers: ["Tiny Tim", "Crypt-Keeper", "Igor", "Nosferatu"],
+    answers: ["Tiny Tim", "Crypt-Keeper", "Buffalo Bill", "Nosferatu"],
     correctAnswer: "Crypt-Keeper",
   },
 ];
+timer;
 var questionIndex = 0;
 var quizTime = 99;
 var startingTime = 1;
@@ -49,6 +50,9 @@ question.style.display = "none";
 scoreContainer.style.display = "none";
 // question and answer connect function used on line 91
 var showAnswers = function (currentQuestion) {
+  if (questionIndex === 4) {
+    return;
+  }
   question.textContent = currentQuestion.question;
   answerOne.textContent = currentQuestion.answers[0];
   answerTwo.textContent = currentQuestion.answers[1];
@@ -58,6 +62,7 @@ var showAnswers = function (currentQuestion) {
   answerTwo.value = currentQuestion.answers[1];
   answerThree.value = currentQuestion.answers[2];
   answerFour.value = currentQuestion.answers[3];
+  console.log(questionIndex);
 };
 
 // start quiz timer pre-timer
@@ -84,7 +89,7 @@ function startQuiz() {
     timer.textContent = quizTime + " left in quiz";
     timer.style.textAlign = "center";
     if (quizTime === 0) {
-      clearInterval(quizTime);
+      clearInterval(timeInterval);
       hiscores();
     }
   }, 1000);
@@ -95,28 +100,30 @@ function startQuiz() {
   // for loop to put answer on buttons
   for (let i = 0; i < answers.length; i++)
     answers[i].addEventListener("click", function () {
-      if (this.textContent === questions[questionIndex].correctAnswer) {
-        answerAreax = "you are correct";
-        questionIndex++;
-        showAnswers(questions[questionIndex]);
-      }
-
-      if (questionIndex > 4) {
-        hiscores();
+      if (questionIndex < 4) {
+        if (this.textContent === questions[questionIndex].correctAnswer) {
+          grade.textContent = "you are correct";
+          questionIndex++;
+          showAnswers(questions[questionIndex]);
+        } else {
+          grade.textContent = "are you sure about that?";
+          quizTime = quizTime - 10;
+        }
       } else {
-        answerAreax = "are you sure about that?";
-        quizTime = quizTime - 10;
+        hiscores();
+        clearInterval(timeInterval);
       }
     });
 
   // hiscores feature
 
   function hiscores() {
+    question.style.display = "none";
+    answerAreax.style.display = "none";
+    grade.style.display = "none";
     scoreContainer.style.display = "block";
     nameInput.addEventListener("submit", function (event) {
       event.preventDefault();
-      var nameText = nameInput.nodeValue.trim();
-      scores.push(nameText);
     });
   }
 }
