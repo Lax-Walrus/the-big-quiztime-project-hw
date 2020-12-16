@@ -15,7 +15,7 @@ var scoreContainer = document.querySelector(".score-container");
 var nameInput = document.querySelector("#name-input");
 var grade = document.querySelector("#grade");
 var welcomeToMyGame = document.querySelector(".opening-header");
-var userValues = JSON.parse(localStorage.getItem("userValues") || "[]");
+var userValues = JSON.parse(localStorage.getItem("userValues")) || "[]";
 var names = [];
 var questions = [
   {
@@ -46,6 +46,7 @@ var quizTime = 99;
 var startingTime = 1;
 var finalScore = 99;
 // display and hiding content
+console.log(userValues);
 answerAreax.style.display = "none";
 question.style.display = "none";
 scoreContainer.style.display = "none";
@@ -120,6 +121,7 @@ function startQuiz() {
   var scoreList = document.querySelector(".score-list");
 
   function hiscores() {
+    var pastScores = document.querySelector(".past-scores");
     var submitscore = document.querySelector("#submit-scores");
     question.style.display = "none";
     answerAreax.style.display = "none";
@@ -129,10 +131,9 @@ function startQuiz() {
       var scores = { nameInput: [nameInput.value], score: [quizTime] };
       userValues.push(scores);
       console.log(scores);
-      localStorage.setItem("userValues", JSON.stringify(userValues));
-
-      JSON.parse(userValues).textContent = score.nameInput;
-      JSON.parse(userValues).textContent = score.score;
+      localStorage.setItem("scores", JSON.stringify(userValues));
+      scoreContainer.textContent =
+        "Player " + scores.nameInput[0] + " Score " + scores.score[0];
     });
   }
 }

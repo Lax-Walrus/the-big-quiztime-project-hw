@@ -1,5 +1,16 @@
 body {
-  background-color: plum;
+  background-color: black;
+  color: whitesmoke;
+}
+
+.container {
+  border: 2px solid whitesmoke;
+  padding: 20px;
+}
+
+#question {
+  text-align: center;
+  font-size: xx-large;
 }
 
 .start-button-area {
