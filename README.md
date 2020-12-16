@@ -1,8 +1,11 @@
 # the-big-quiztime-project-hw
 
+![snapShot](https://github.com/Lax-Walrus/the-big-quiztime-project-hw/blob/main/photos/screenShot%20of%20deployment.png?raw=true)
+
 ## Product:
 
----
+## [Click Me](https://lax-walrus.github.io/the-big-quiztime-project-hw/) to see the deployed website
+
 This is a quick Javascript quiz about different horror icons answering correctly will move you to the next question and answering wrong will cause you to lose 10 seconds
 
 ## Features:
