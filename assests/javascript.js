@@ -15,7 +15,7 @@ var scoreContainer = document.querySelector(".score-container");
 var nameInput = document.querySelector("#name-input");
 var grade = document.querySelector("#grade");
 var welcomeToMyGame = document.querySelector(".opening-header");
-var userValues = JSON.parse(localStorage.getItem("userValues")) || "[]";
+var userValues = JSON.parse(localStorage.getItem("userValues")) || [];
 var names = [];
 var questions = [
   {
@@ -128,12 +128,23 @@ function startQuiz() {
     grade.style.display = "none";
     scoreContainer.style.display = "block";
     submitscore.addEventListener("click", function () {
-      var scores = { nameInput: [nameInput.value], score: [quizTime] };
+      var scores = { nameInput: nameInput.value, score: quizTime };
       userValues.push(scores);
-      console.log(scores);
-      localStorage.setItem("scores", JSON.stringify(userValues));
-      scoreContainer.textContent =
-        "Player " + scores.nameInput[0] + " Score " + scores.score[0];
+      console.log(userValues);
+
+      localStorage.setItem("userValues", JSON.stringify(userValues));
+
+      for (let i = 0; i < 10; i++) {
+        if (userValues[i]) {
+          var li = document.createElement("li");
+          li.textContent =
+            "Player " +
+            userValues[i].nameInput +
+            " Score " +
+            userValues[i].score;
+          pastScores.appendChild(li);
+        }
+      }
     });
   }
 }
